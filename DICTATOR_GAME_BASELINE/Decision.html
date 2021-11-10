@@ -1,0 +1,58 @@
+{{ extends "global/Page.html" }}
+
+{{ block title }}
+WiSo-Forschungslabor
+{{ endblock }}
+
+{{ block content }}
+<div id="wrapper">
+    <div id="content-box">
+        <div class="content-header">
+            Entscheidung {{ player.round_number }}
+        </div>
+        {{ if player.round_number == 1 }}
+        <div class="standard-paragraph">
+            Sie wurden zufällig mit einer anderen Person des Experiments gematcht.
+        </div>
+        {{ else }}
+        <div class="standard-paragraph">
+            Für diesen Teil wurden Sie zufällig mit einer anderen Person des Experiments gematcht.
+        </div>
+        {{ if player.round_number == 2 }}
+        <div class="standard-paragraph">
+            Diese Person hat bei der Frage „Wie geht es Ihnen?“ Folgendes angegeben:
+        </div>
+        <div class="standard-paragraph fst-italic px-5">
+            {{ partners_answer_to_q1 }}
+        </div>
+        {{ elif player.round_number == 3 }}
+        <div class="standard-paragraph">
+            Diese Person hat bei der Frage „Wie ist das Wetter?“ Folgendes angegeben:
+        </div>
+        <div class="standard-paragraph fst-italic px-5">
+            {{ partners_answer_to_q2 }}
+        </div>
+        {{ endif }}
+        {{ endif }}
+        <div class="standard-paragraph">
+            Wie möchten Sie die {{ endowment_in_points }} aufteilen?
+        </div>
+        <div class="standard-paragraph">
+            {{ points_per_real_world_currency_unit }} entsprechen 1 Euro.
+        </div>
+        <div id="decision-box" class="standard-paragraph">
+            Behalten: {{ formfield "taler" }} {{ POINTS_CUSTOM_NAME }}
+        </div>
+        <div class="standard-paragraph">
+            Ihr:e Partner:in erhält: <span id="points-for-partner">___</span> {{ POINTS_CUSTOM_NAME }}
+        </div>
+    </div>
+    <div id="button-box">
+        <button class="otree-btn-next btn btn-primary">Weiter</button>
+    </div>
+</div>
+{{ endblock }}
+
+{{ block scripts }}
+<script src="{{ static 'global/js/Decision.js' }}"></script>
+{{ endblock }}

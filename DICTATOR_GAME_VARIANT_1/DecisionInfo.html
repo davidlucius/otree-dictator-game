@@ -1,0 +1,36 @@
+{{ extends "global/Page.html" }}
+
+{{ block title }}
+WiSo-Forschungslabor
+{{ endblock }}
+
+{{ block content }}
+<div id="wrapper">
+    <div id="content-box">
+        <div class="content-header">
+            Entscheidung {{ player.round_number }}
+        </div>
+        <div class="standard-paragraph">
+            Für diesen Teil wurden Sie zufällig mit einer anderen Person des Experiments gematcht.
+        </div>
+        {{ for decision, info_text in Constants.info_texts.items }}
+        {{ if decision == player.round_number }}
+        <div class="standard-paragraph">
+            {{ info_text }}
+        </div>
+        {{ endif }}
+        {{ endfor }}
+        <div class="standard-paragraph">
+            Im Folgenden können Sie als Diktator:in darüber entscheiden,
+            wie Sie {{ endowment_in_points }} zwischen sich und dieser anderen Person
+            des Experi&shy;ments aufteilen möchten.
+        </div>
+        <div class="standard-paragraph">
+            {{ points_per_real_world_currency_unit }} entsprechen 1 Euro.
+        </div>
+    </div>
+    <div id="button-box">
+        <button class="otree-btn-next btn btn-primary">Weiter</button>
+    </div>
+</div>
+{{ endblock }}

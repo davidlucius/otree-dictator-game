@@ -1,0 +1,59 @@
+{{ extends "global/Page.html" }}
+
+{{ block title }}
+WiSo-Forschungslabor
+{{ endblock }}
+
+{{ block content }}
+<div id="wrapper">
+    <div id="content-box">
+        <div class="content-header">
+            Auszahlung
+        </div>
+        <div class="standard-paragraph fw-bold">
+            Zusammenfassung Ihrer Entscheidungen
+        </div>
+        <div class="standard-paragraph">
+            <table id="decisions">
+                <thead>
+                <tr>
+                    <th>Entscheidung</th>
+                    <th>{{ POINTS_CUSTOM_NAME }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{ for points in points_in_rounds }}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ points }}</td>
+                </tr>
+                {{ endfor }}
+                </tbody>
+            </table>
+        </div>
+        <div class="standard-paragraph">
+            Entscheidung {{ session.winning_dec }} wurde zufällig für die Auszahlung ausgewählt.
+            Sie erhalten {{ points_in_winning_dec }}.
+        </div>
+        <div class="standard-paragraph">
+            Zudem erhalten Sie als Empfänger:in: {{ points_from_partner_in_winning_dec }}.
+        </div>
+        <div class="standard-paragraph">
+            Dies bedeutet für Sie die folgende Auszahlung: {{ participant.payoff_plus_participation_fee }}
+        </div>
+        <div class="standard-paragraph">
+            Ihre Auszahlung wird Ihnen in den nächsten Tagen auf Ihr Bankkonto überwiesen.
+        </div>
+        <div class="standard-paragraph">
+            Bitte prüfen Sie auf
+            <a href="https://hroot.wiso.uni-hamburg.de" target="_blank">https://hroot.wiso.uni-hamburg.de</a>,
+            ob Ihre Kontodaten bei hroot hinterlegt sind.
+            Falls nicht, tragen Sie diese bitte ein,
+            damit Ihnen Ihr Auszahlungsbetrag überwiesen werden kann.
+        </div>
+    </div>
+    <div id="button-box">
+        <button class="otree-btn-next btn btn-primary">Weiter</button>
+    </div>
+</div>
+{{ endblock }}

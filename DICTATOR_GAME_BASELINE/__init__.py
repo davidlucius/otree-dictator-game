@@ -229,6 +229,6 @@ page_sequence = [
     DecisionInfo,
     Decision,
     WaitingForPartner02,
-    Payment,
-    Questionnaire02
+    Questionnaire02,
+    Payment
 ]

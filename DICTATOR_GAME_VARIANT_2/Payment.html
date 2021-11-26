@@ -1,0 +1,41 @@
+{{ extends "global/Page.html" }}
+
+{{ block title }}
+WiSo-Forschungslabor
+{{ endblock }}
+
+{{ block content }}
+<div id="wrapper">
+    <div id="content-box">
+        <div class="content-header">
+            Auszahlung
+        </div>
+        <div class="standard-paragraph">
+            <span class="fw-bold">Ihr Verdienst:</span>
+            <ul class="first-level-list">
+                {{ for payoff in payoffs }}
+                <li>
+                    <span class="fw-bold">In Entscheidung {{ forloop.counter }}:</span> {{ payoff }}
+                </li>
+                {{ endfor }}
+            </ul>
+        </div>
+        <div class="standard-paragraph">
+            Insgesamt haben Sie damit {{ participant.payoff }} erspielt.
+        </div>
+        <div class="standard-paragraph">
+            Somit beträgt Ihre Auszahlung {{ participant.payoff_plus_participation_fee }}.
+        </div>
+        <div class="standard-paragraph">
+            Ihre Auszahlung wird Ihnen in den nächsten Tagen auf Ihr Bankkonto überwiesen.
+        </div>
+        <div class="standard-paragraph">
+            Bitte prüfen Sie auf
+            <a href="https://hroot.wiso.uni-hamburg.de" target="_blank">https://hroot.wiso.uni-hamburg.de</a>,
+            ob Ihre Kontodaten bei hroot hinterlegt sind.
+            Falls nicht, tragen Sie diese bitte ein,
+            damit Ihnen Ihr Auszahlungsbetrag überwiesen werden kann.
+        </div>
+    </div>
+</div>
+{{ endblock }}

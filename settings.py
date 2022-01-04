@@ -2,23 +2,23 @@ from os import environ
 
 SESSION_CONFIGS = [
     dict(
-        name='dictator_game_baseline',
-        display_name=f'Dictator Game - Treatment: Baseline',
-        app_sequence=['DICTATOR_GAME_BASELINE'],
+        name='dictator_game_info',
+        display_name='Dictator Game - Info',
+        app_sequence=['DICTATOR_GAME_INFO'],
         num_demo_participants=4,
         endowment_in_real_world_currency=3
     ),
     dict(
-        name='dictator_game_variant_1',
-        display_name=f'Dictator Game - Treatment: Variant 1',
-        app_sequence=['DICTATOR_GAME_VARIANT_1'],
+        name='dictator_game_normen',
+        display_name='Dictator Game - Normen',
+        app_sequence=['DICTATOR_GAME_NORMEN'],
         num_demo_participants=6,
         endowment_in_real_world_currency=3
     ),
     dict(
-        name='dictator_game_variant_2',
-        display_name=f'Dictator Game - Treatment: Variant 2 (risky)',
-        app_sequence=['DICTATOR_GAME_VARIANT_2'],
+        name='dictator_game_prio',
+        display_name='Dictator Game - Prio',
+        app_sequence=['DICTATOR_GAME_PRIO'],
         num_demo_participants=6,
         endowment_in_real_world_currency=0.5,
         min_vaccination_coverage=0.85,

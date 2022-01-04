@@ -18,26 +18,47 @@ WiSo-Forschungslabor
                 <thead>
                 <tr>
                     <th>Entscheidung</th>
-                    <th>{{ POINTS_CUSTOM_NAME }}</th>
+                    <th>Behalten</th>
+                    <th>Abgegeben</th>
+                    <th>Ihr Anteil aus der Gemeinschaftsabgabe</th>
                 </tr>
                 </thead>
-                <tbody>
-                {{ for points in points_in_rounds }}
                 <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ points }}</td>
+                    <td>{{ 1 }}</td>
+                    <td>{{ points_in_round_1 }}</td>
+                    <td>{{ contrib_in_round_1 }}</td>
+                    <td>{{ groupcontrib_in_round_1 }}</td>
                 </tr>
-                {{ endfor }}
-                </tbody>
+                <tr>
+                    <td>{{ 2 }}</td>
+                    <td>{{ points_in_round_2 }}</td>
+                    <td>{{ contrib_in_round_2 }}</td>
+                    <td>{{ groupcontrib_in_round_2 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 3 }}</td>
+                    <td>{{ points_in_round_3 }}</td>
+                    <td>{{ contrib_in_round_3 }}</td>
+                    <td>{{ groupcontrib_in_round_3 }}</td>
+                </tr>
             </table>
         </div>
         <div class="standard-paragraph">
             Entscheidung {{ session.winning_dec }} wurde zufällig für die Auszahlung ausgewählt.
-            Sie erhalten {{ points_in_winning_dec }}.
+            In der Runde haben Sie {{ taler_in_winning_dec }} behalten und aus dem gemeinsamen Topf {{ share_in_winning_dec }} erhalten.
+            Insgesamt sind es damit {{ points_in_winning_dec }}. (10 Taler = 5,00€)
         </div>
+        {{ if group.session.winning_dec == 2 }}
         <div class="standard-paragraph">
-            Zudem erhalten Sie als Empfänger:in: {{ points_from_partner_in_winning_dec }}.
+            {{ if freerider }}
+                {{ if loosing_money }}
+                Sie haben sich in der Runde nicht an die Pflichtabgabe gehalten und wurden ausgewählt, sodass Sie Ihre erspielten Taler nicht ausgezahlt bekommen.
+                {{ else }}
+                Sie haben sich in der Runde nicht an die Pflichtabgabe gehalten, wurden jedoch nicht ausgewählt, sodass Sie Ihre erspielten Taler ausgezahlt bekommen.
+            {{ endif }}
         </div>
+        {{ endif }}
+        {{ endif }}
         <div class="standard-paragraph">
             Dies bedeutet für Sie die folgende Auszahlung: {{ participant.payoff_plus_participation_fee }}
         </div>

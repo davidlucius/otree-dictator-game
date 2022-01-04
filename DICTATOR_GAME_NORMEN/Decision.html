@@ -12,12 +12,9 @@ WiSo-Forschungslabor
         </div>
         {{ if player.round_number == 1 }}
         <div class="standard-paragraph">
-            Sie wurden zufällig mit einer anderen Person des Experiments gematcht.
+            Sie erhalten {{ endowment_in_points }}.
         </div>
         {{ else }}
-        <div class="standard-paragraph">
-            Für diesen Teil wurden Sie zufällig mit einer anderen Person des Experiments gematcht.
-        </div>
         {{ for decision, info_text in Constants.info_texts.items }}
         {{ if decision == player.round_number }}
         <div class="standard-paragraph">
@@ -27,16 +24,32 @@ WiSo-Forschungslabor
         {{ endfor }}
         {{ endif }}
         <div class="standard-paragraph">
-            Wie möchten Sie die {{ endowment_in_points }} aufteilen?
+            Sie haben die Möglichkeit Ihre {{ endowment_in_points }} zu behalten oder abzugeben. Dabei können Sie wählen, wie viele von Ihren
+            {{ endowment_in_points }} Sie für Ihre {{ num_other_players }} Mitspieler:innen abgeben möchten. Die Token, die Sie abgeben, werden mit dem Faktor 2 multipliziert.
+        </div>
+        <div class="standard-paragraph">
+            Die abgegebenen Taler werden gesammelt. Nachdem alle Teilnehmenden über ihre {{ endowment_in_points }} entschieden haben,
+            werden die gesammelten Taler gleichmäßig zwischen allen {{ subsession.num_players }} Teilnehmenden (Sie also mit inbegriffen) aufgeteilt.
+        </div>
+         <div class="standard-paragraph">
+            Ihre Auszahlung setzt sich folglich zusammen aus den Talern, die Sie behalten (sofern Sie Taler behalten) und
+             aus einem Anteil der gesammelten Taler aller Teilnehmenden.
+        </div>
+        <div class="standard-paragraph">
+            Ihre erzielte Auszahlung erfahren Sie erst nachdem Sie und Ihre Mitspieler:innen das gesamte Experiment durchlaufen
+            haben.
         </div>
         <div class="standard-paragraph">
             {{ points_per_real_world_currency_unit }} entsprechen 1 Euro.
+        </div>
+        <div class="standard-paragraph">
+            Bitte wählen Sie den Betrag, den Sie behalten möchten
         </div>
         <div id="decision-box" class="standard-paragraph">
             Behalten: {{ formfield "taler" }} {{ POINTS_CUSTOM_NAME }}
         </div>
         <div class="standard-paragraph">
-            Ihr:e Partner:in erhält: <span id="points-for-partner">___</span> {{ POINTS_CUSTOM_NAME }}
+            Damit erhält die Gemeinschaft: <span id="points-for-partner">___</span> {{ POINTS_CUSTOM_NAME }}
         </div>
     </div>
     <div id="button-box">

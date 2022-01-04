@@ -1,0 +1,249 @@
+{{ extends "global/Page.html" }}
+
+{{ block title }}
+WiSo-Forschungslabor
+{{ endblock }}
+
+{{ block content }}
+<div id="wrapper">
+    <div id="content-box">
+        <div class="content-header">
+            Entscheidung {{ player.round_number }}
+        </div>
+        {{ if player.round_number == 1 }}
+        <div class="standard-paragraph">
+            Sie erhalten {{ endowment_in_points }}.
+        </div>
+        {{ else }}
+        {{ for decision, info_text in Constants.info_texts.items }}
+        {{ if decision == player.round_number }}
+        <div class="standard-paragraph">
+            {{ info_text }}
+        </div>
+        {{ endif }}
+        {{ endfor }}
+        {{ endif }}
+        <div class="standard-paragraph">
+            Sie haben die Möglichkeit Ihre {{ endowment_in_points }} zu behalten oder abzugeben. Dabei können Sie wählen, wie viele Sie von Ihren
+            {{ endowment_in_points }}n für die Gemeinschaft (inklusive Ihnen) abgeben möchten.
+        </div>
+        <div class="standard-paragraph">
+            Die abgegebenen Taler aller Teilnehmenden für die Gemeinschaft werden gesammelt und mit dem Faktor 2 multipliziert.
+            Nachdem alle Teilnehmenden über ihre {{ endowment_in_points }} entschieden haben,
+            werden die gesammelten und mit dem Faktor 2 multiplizierten Taler gleichmäßig zwischen allen {{ subsession.num_players }} Teilnehmenden (Sie also mit inbegriffen) aufgeteilt.
+        </div>
+        <div class="standard-paragraph">
+            Die Gemeinschaft als Gesamtes profitiert also am meisten, wenn alle sich dazu entscheiden, ihre gesamten Taler abzugeben.
+        </div>
+         <div class="standard-paragraph">
+            Ihre Auszahlung setzt sich folglich zusammen aus den Talern, die Sie behalten (sofern Sie Taler behalten) und
+             aus einem Anteil der mit dem Faktor 2 multiplizierten gesammelten Taler aller Teilnehmenden.
+        </div>
+        <div class="standard-paragraph">
+            Die folgende Tabelle zeigt, wie viele Taler Sie jeweils erhalten, abhängig davon, wie viele Sie bzw. die anderen Personen der Gemeinschaft durchschnittlich abgeben.
+        </div>
+        <div class="standard-paragraph">
+            <table id="decisions">
+                <thead>
+                <tr>
+                    <th>Ihre Abgabe (unten) / Abgabe Gemeinschaft (rechts)</th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>{{ 0 }}</td>
+                    <td>10</td>
+                    <td>12</td>
+                    <td>14</td>
+                    <td>16</td>
+                    <td>18</td>
+                    <td>20</td>
+                    <td>22</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>27</td>
+                    <td>29</td>
+                </tr>
+                <tr>
+                    <td>{{ 1 }}</td>
+                    <td>9</td>
+                    <td>11</td>
+                    <td>13</td>
+                    <td>15</td>
+                    <td>17</td>
+                    <td>19</td>
+                    <td>21</td>
+                    <td>23</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>28</td>
+                </tr>
+                <tr>
+                    <td>{{ 2 }}</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td>12</td>
+                    <td>14</td>
+                    <td>16</td>
+                    <td>18</td>
+                    <td>20</td>
+                    <td>22</td>
+                    <td>24</td>
+                    <td>26</td>
+                    <td>27</td>
+                </tr>
+                <tr>
+                    <td>{{ 3 }}</td>
+                    <td>7</td>
+                    <td>9</td>
+                    <td>11</td>
+                    <td>13</td>
+                    <td>15</td>
+                    <td>17</td>
+                    <td>19</td>
+                    <td>21</td>
+                    <td>23</td>
+                    <td>25</td>
+                    <td>27</td>
+                </tr>
+                <tr>
+                    <td>{{ 4 }}</td>
+                    <td>6</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td>12</td>
+                    <td>14</td>
+                    <td>16</td>
+                    <td>18</td>
+                    <td>20</td>
+                    <td>22</td>
+                    <td>24</td>
+                    <td>26</td>
+                </tr>
+                <tr>
+                    <td>{{ 5 }}</td>
+                    <td>5</td>
+                    <td>7</td>
+                    <td>9</td>
+                    <td>11</td>
+                    <td>13</td>
+                    <td>15</td>
+                    <td>17</td>
+                    <td>19</td>
+                    <td>21</td>
+                    <td>23</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>{{ 6 }}</td>
+                    <td>4</td>
+                    <td>6</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td>12</td>
+                    <td>14</td>
+                    <td>16</td>
+                    <td>18</td>
+                    <td>20</td>
+                    <td>22</td>
+                    <td>24</td>
+                </tr>
+                <tr>
+                    <td>{{ 7 }}</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>7</td>
+                    <td>9</td>
+                    <td>11</td>
+                    <td>13</td>
+                    <td>15</td>
+                    <td>17</td>
+                    <td>19</td>
+                    <td>21</td>
+                    <td>23</td>
+                </tr>
+                <tr>
+                    <td>{{ 8 }}</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>6</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td>12</td>
+                    <td>14</td>
+                    <td>16</td>
+                    <td>18</td>
+                    <td>20</td>
+                    <td>22</td>
+                </tr>
+                <tr>
+                    <td>{{ 9 }}</td>
+                    <td>2</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>7</td>
+                    <td>9</td>
+                    <td>11</td>
+                    <td>13</td>
+                    <td>15</td>
+                    <td>17</td>
+                    <td>19</td>
+                    <td>21</td>
+                </tr>
+                <tr>
+                    <td>{{ 10 }}</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>8</td>
+                    <td>10</td>
+                    <td>12</td>
+                    <td>14</td>
+                    <td>16</td>
+                    <td>18</td>
+                    <td>20</td>
+                </tr>
+            </table>
+        </div>
+        <div class="standard-paragraph">
+            Ihre erzielte Auszahlung erfahren Sie erst, nachdem Sie und die anderen Personen das gesamte Experiment durchlaufen
+            haben.
+        </div>
+        <div class="standard-paragraph">
+            Bitte wählen Sie die Anzahl an Talern, die Sie behalten möchten.
+        </div>
+        <div id="decision-box" class="standard-paragraph">
+            Behalten: {{ formfield "taler" }} {{ POINTS_CUSTOM_NAME }}
+        </div>
+        <div class="standard-paragraph">
+            Damit erhält die Gemeinschaft: <span id="points-for-partner">___</span> {{ POINTS_CUSTOM_NAME }}
+        </div>
+    </div>
+    <div id="button-box">
+        <button class="otree-btn-next btn btn-primary">Weiter</button>
+    </div>
+</div>
+
+<script>
+setTimeout(
+function () {
+alert("Die Beantwortungszeit ist gleich abgelaufen. Bitte treffen Sie in den nächsten 30 Sekunden Ihre Entscheidung.");
+},
+90*1000); // 90 seconds
+</script>
+{{ endblock }}
+
+{{ block scripts }}
+<script src="{{ static 'global/js/Decision.js' }}"></script>
+{{ endblock }}

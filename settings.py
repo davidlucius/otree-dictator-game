@@ -13,9 +13,9 @@ SESSION_CONFIGS = [
         name='dictator_game_normen',
         display_name='Dictator Game - Normen',
         app_sequence=['DICTATOR_GAME_NORMEN'],
-        num_demo_participants=6,
-        endowment_in_real_world_currency=3,
-        real_world_currency_per_point=0.05
+        num_demo_participants=3,
+        endowment_in_real_world_currency=5,
+        real_world_currency_per_point=0.50
     ),
     dict(
         name='dictator_game_prio',

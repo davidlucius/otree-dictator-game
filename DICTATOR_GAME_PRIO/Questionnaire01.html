@@ -8,24 +8,29 @@ WiSo-Forschungslabor
 <div id="wrapper">
     <div id="content-box">
         <div class="standard-paragraph">
+
+        <div class="content-header">
+            Fragebogen zu Teil 1
+            <p></p>
+        </div>
             {{ if player.role == "dictator" }}
             <span class="fw-bold">
-                Was glauben Sie, welchen Termin die anderen Teilnehmer wählen?
+                Was glauben Sie, welchen Termin <u>die meisten anderen Teilnehmer</u> in der gleichen Entscheidungssituation gewählt haben?
             </span> {{ formfield "belief_d_1" label="" }}
             {{ elif player.role == "recipient" }}
             <span class="fw-bold">
-                Was glauben Sie, welchen Termin die anderen Teilnehmer wählen?
+                Was glauben Sie, für welchen Termin hat sich Ihr Gegenüber entschieden?
             </span> {{ formfield "belief_e_1" label="" }}
             {{ endif }}
         </div>
         <div class="standard-paragraph">
             {{ if player.role == "dictator" }}
             <span class="fw-bold">
-                Was glauben Sie, wie sich die anderen Diktatoren verhalten haben?
+                Wie bewerten Sie <u>Ihre eigene</u> Entscheidung?
             </span> {{ formfield "belief_d_2" label="" }}
             {{ elif player.role == "recipient" }}
             <span class="fw-bold">
-                Was glauben Sie, wie sich der Diktator entscheiden wird?
+                Wie würden Sie die Entscheidung Ihres Gegenübers bewerten?
             </span> {{ formfield "belief_e_2" label="" }}
             {{ endif }}
         </div>

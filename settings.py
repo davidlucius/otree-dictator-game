@@ -21,9 +21,9 @@ SESSION_CONFIGS = [
         name='dictator_game_prio',
         display_name='Dictator Game - Prio',
         app_sequence=['DICTATOR_GAME_PRIO'],
-        num_demo_participants=6,
-        endowment_in_real_world_currency=0.5,
-        real_world_currency_per_point=0.05,
+        num_demo_participants=2,
+        endowment_in_real_world_currency=2,
+        real_world_currency_per_point=0.20,
         min_vaccination_coverage=0.85,
         failure_payoff_in_points=5
     )

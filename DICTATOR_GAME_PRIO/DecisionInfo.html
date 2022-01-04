@@ -9,158 +9,167 @@ WiSo-Forschungslabor
     <div id="content-box">
         {{ if player.round_number == 1 }}
         <div class="standard-paragraph">
+
+         <div class="content-header">
+            Teil 1
+             <p> </p>
+        </div>
+
             {{ if player.role == "dictator" }}
-            Im folgenden Experiment sind Sie bereits vollständig geimpft;
-            in Zahlen besitzen Sie damit eine Grundausstattung von {{ endowment_in_points }}n.
-            Sie haben die Möglichkeit sich für eine Booster-Impfung zu entscheiden.
-            Dabei stehen sechs Termine zur Auswahl.
-            Weiterhin gibt es eine bislang ungeimpfte Person, bei der es wichtig wäre,
-            dass sie möglichst schnell erst-geimpft wird.
-            Je früher Sie sich impfen lassen, desto mehr Boni in Form von Talern erhalten Sie,
-            allerdings ist die Wahrscheinlichkeit erhöht, dass die zweite Person keine Impfung erhält.
-            In Zahlen heißt das, mit jedem Termin, den Sie früher wählen,
-            sinkt die Wahrscheinlichkeit geimpft zu werden des anderen um 20%.
-            Verliert die andere Person ihren Impftermin und wird nicht geimpft,
-            verliert sie all ihre {{ POINTS_CUSTOM_NAME }} / ihre Grundausstattung.
+
+
+            <p>Im folgenden Experiment sind Sie <b> seit 6 Monaten doppelt gegen COVID-19 geimpft </b>
+                und haben eine Grundausstattung von {{ endowment_in_points }}n. Sie sind nun berechtigt
+                für eine Booster-Impfung. Dafür stehen Ihnen 6 Termine zur Auswahl.
+                Termin 1 ist der frühste und Termin 6 der späteste Termin (siehe Tabelle).</p>
+            <p>Ihr ungeimpfter Gegenüber besitzt ebenfalls eine Grundausstattung
+                von {{ endowment_in_points }}n. Und er hat einen möglichen Erst-Impftermin.
+                Für Ihr Gegenüber ist es wichtig, dass er möglichst schnell erst-geimpft wird.</p>
+            <p>Je früher Sie sich boostern lassen, desto mehr Taler erhalten Sie extra (Ihr Zusatzbetrag).
+                Allerdings erhöhen Sie gleichzeitig die Wahrscheinlichkeit,
+                dass die andere Person keine Impfung erhält. Das bedeutet, mit jedem Termin, den Sie früher
+                wählen, sinkt die Wahrscheinlichkeit <b>des anderen</b> geimpft zu werden um 20 Prozentpunkte.
+                Wird die andere Person nicht erst-geimpft, verliert sie ihre Grundausstattung und erhält somit 0
+                {{ POINTS_CUSTOM_NAME }}.</p>
+
             {{ elif player.role == "recipient" }}
-            Im folgenden Experiment sind Sie noch nicht geimpft;
-            in Zahlen besitzen Sie eine Grundausstattung von {{ endowment_in_points }}n.
-            Es wäre wichtig, dass Sie angesichts der aufkommenden fünften Welle möglichst schnell geimpft werden.
-            Weiterhin gibt es eine vollständig geimpfte Person, welche die Möglichkeit hat,
-            sich für eine Booster-Impfung zu entscheiden. Dabei stehen sechs Termine zur Auswahl.
-            Je früher diese sich boostern lässt, desto mehr Boni in Form von {{ POINTS_CUSTOM_NAME }}n erhält sie,
-            allerdings ist die Wahrscheinlichkeit erhöht, dass Sie keine Impfung erhalten.
-            In Zahlen heißt das, mit jedem Termin, den die andere Person früher wählt,
-            sinkt Ihre Wahrscheinlichkeit geimpft zu werden um 20%.
-            Verlieren Sie ihren Impftermin und werden nicht geimpft,
-            verlieren Sie all ihre {{ POINTS_CUSTOM_NAME }} / ihre Grundausstattung.
+
+            <p>Im folgenden Experiment sind Sie <b>noch nicht gegen COVID-19 geimpft</b>. Sie
+                besitzen eine Grundausstattung von {{ endowment_in_points }}n.
+                Es ist wichtig, dass Sie angesichts der aktuellen pandemischen Lage
+                möglichst schnell geimpft werden.</p>
+            <p>Ihr geimpfter Gegenüber hat die Möglichkeit, sich für eine
+                Auffrischungsimpfung (Booster-Impfung) zu entscheiden. Dabei stehen diesem sechs
+                Termine zur Auswahl.  Termin 1 ist der frühste und Termin 6 der späteste Termin (siehe Tabelle). Je früher sich Ihr Gegenüber boostern lässt, desto mehr Taler
+                erhält er, allerdings ist die Wahrscheinlichkeit erhöht, dass Sie <b>selbst</b> keine Erst-Impfung
+                erhalten. Das heißt, mit jedem Termin, den Ihr Gegenüber früher wählt, sinkt <b>Ihre</b>
+                Wahrscheinlichkeit geimpft zu werden um 20 Prozentpunkte. Werden Sie nicht geimpft, verlieren
+                Sie Ihre Grundausstattung von {{ endowment_in_points }}n. </p>
+
             {{ endif }}
+
         </div>
         <div class="standard-paragraph">
-            {{ points_per_real_world_currency_unit }} entsprechen 1 Euro.
+            <p>{{ points_per_real_world_currency_unit }} entsprechen 1 Euro.</p>
         </div>
+
+        {{ elif player.round_number == 2 }}
+
+        <div class="content-header">
+            Teil 2
+             <p> </p>
+        </div>
+
+
+        </div>
+        <div class="standard-paragraph">
+            {{ if player.role == "dictator" }}
+            <p>Alle Teilnehmer behalten ihre Rolle. Sie sind wieder seit 6 Monaten
+                doppelt gegen COVID-19 geimpft und Ihnen wird zufällig ein <b>neuer
+                    ungeimpfter Gegenüber</b> zugeteilt. Sie besitzen erneut eine Grundausstattung von
+                {{ endowment_in_points }}n. </p>
+
+            <p>Sie haben <b>erneut die Möglichkeit</b>, einen Termin für eine Booster-Impfung
+                und somit einen Zusatzbetrag zu bekommen, aber senken gleichzeitig die
+                Wahrscheinlichkeit des Erst-Impftermins Ihres Gegenübers. Modellierungen des Robert Koch-Instituts
+                zeigen, dass eine Impfquote von mindestens 85% notwendig ist, um „Herdenimmunität“
+                zu erreichen und somit die Pandemie in den Griff zu bekommen.</p>
+
+            <p><b>Sie alle fungieren nun als Gesellschaft</b> mit {{ subsession.num_players }} Personen.
+                Neben Ihnen sind {{ num_other_dictators }} weitere Personen geimpft und befinden
+                sich gleichzeitig in der gleichen Entscheidungssituation. Insgesamt müssen von
+                den ungeimpften Personen {{ subsession.min_vaccinated_recipients }} geimpft werden,
+                um Herdenimmunität zu erreichen.</p>
+
+            <p>Bei Nicht-Erreichen der Herdenimmunität ist der Gesamtbetrag
+                für jeden Geimpften (geboostert und erst-geimpft) {{no_herd}} Taler. Ungeimpft Gebliebene verlieren
+                unabhängig vom Erreichen der Herdenimmunität ihre Grundausstattung von {{ endowment_in_points }}n.
+                Erst-Geimpfte behalten bei Herdenimmunität ihre Grundausstattung.</p>
+
+            {{ elif player.role == "recipient" }}
+            <p>Alle Teilnehmer behalten ihre Rolle. Sie sind wieder noch nicht gegen COVID-19 geimpft
+                und Ihnen wird zufällig ein neuer geimpfter Gegenüber zugeteilt. Es ist wichtig,
+                dass Sie angesichts
+                der aktuellen pandemischen Lage möglichst schnell geimpft werden. Sie besitzen
+                erneut eine Grundausstattung von {{ endowment_in_points }}n.</p>
+
+            <p>Ihr geimpfter Gegenüber hat die Möglichkeit, sich für eine
+                Auffrischungsimpfung (Booster-Impfung) zu entscheiden. Dabei stehen diesem 6
+                Termine zur Auswahl. Je früher sich Ihr Gegenüber boostern lässt, desto mehr Taler
+                erhält er, allerdings ist die Wahrscheinlichkeit erhöht, dass Sie keine Erst-Impfung
+                erhalten. Das heißt, mit jedem Termin, den Ihr Gegenüber früher wählt, sinkt Ihre
+                Wahrscheinlichkeit geimpft zu werden um 20 Prozentpunkte. Modellierungen des Robert Koch-Instituts
+                zeigen, dass eine Impfquote von mindestens 85% notwendig ist, um „Herdenimmunität“
+                zu erreichen und somit die Pandemie in den Griff zu bekommen.</p>
+
+            <p><b>Sie alle fungieren nun als Gesellschaft</b> mit {{ subsession.num_players }} Personen.
+                Neben Ihnen sind {{ num_other_dictators }} weitere Personen ungeimpft. Insgesamt müssen von
+                den ungeimpften Personen {{ subsession.min_vaccinated_recipients }} geimpft werden,
+                um Herdenimmunität zu erreichen.</p>
+
+
+            <p> Werden Sie nicht erst-geimpft, verlieren Sie Ihre Grundausstattung
+                unabhängig davon, ob die Herdenimmunität erreicht wurde. Wurde Herdenimmunität
+                erreicht und Sie wurden erst-geimpft, behalten Sie Ihre {{ endowment_in_points }}. </p>
+
+            {{ endif }}
+
+        {{ endif }}
+    </div>
+    <div class="standard-paragraph">
         <div class="standard-paragraph">
             <table id="risk-options" class="w-100">
                 <thead>
                 <tr>
-                    <th>Termin</th>
+                    <th colspan="6">{{ if player.role == "dictator" }} Ihr {{endif}} Termin {{ if player.role == "recipient" }} Ihres Gegenübers {{endif}}</th>
                     {{ for option in options }}
                     <th>{{ option }}</th>
                     {{ endfor }}
                 </tr>
                 </thead>
                 <tbody>
+
                 <tr>
-                    <td>
-                        {{ if player.role == "dictator" }}
-                        Ihr zusätzlicher Betrag (in {{ POINTS_CUSTOM_NAME }}n)
-                        {{ elif player.role == "recipient" }}
-                        Zusätzlicher Betrag Ihres Gegenübers (in {{ POINTS_CUSTOM_NAME }}n)
-                        {{ endif }}
+                    <td colspan="6">
+                        {{ if player.role == "dictator" }}Risiko, dass der Ungeimpfte seine Grundausstattung
+                        von {{ endowment_in_points }}n  verliert und ungeimpft bleibt. {{ endif }}
+                        {{ if player.role == "recipient" }} Risko, dass <b>Sie selbst</b> Ihre Grundausstattung
+                        von {{ endowment_in_points }}n  verlieren und ungeimpft bleiben {{ endif }}
                     </td>
-                    {{ for values in options.values }}
-                    <td>{{ values.amount }}</td>
-                    {{ endfor }}
-                </tr>
-                <tr>
-                    <td>
-                        {{ if player.role == "dictator" }}
-                        Wahrscheinlichkeit, dass Ihr Gegenüber keine Impfung erhält und
-                        damit die Ausstattung von {{ endowment_in_points }}n verliert
-                        {{ elif player.role == "recipient" }}
-                        Wahrscheinlichkeit, dass Sie keine Impfung erhalten und
-                        damit Ihre Ausstattung von {{ endowment_in_points }}n verlieren
-                        {{ endif }}
-                    </td>
-                    {{ for values in options.values }}
+                        {{ for values in options.values }}
                     <td>{{ values.probability }}%</td>
-                    {{ endfor }}
+                        {{ endfor }}
+                <tr>
+                    <td colspan="6">
+                        {{ if player.role == "dictator" }} Ihr {{ endif }} <b>Zusatz</b>betrag (in {{ POINTS_CUSTOM_NAME }}n)
+                        {{ if player.role == "recipient" }} Ihres Gegenübers {{ endif }}
+                    </td>
+                        {{ for values in options.values }}
+                    <td>{{ values.amount }}</td>
+                        {{ endfor }}
                 </tr>
+                <tr>
+                    <td colspan="6" >
+                        {{ if player.role == "dictator" }} Ihr {{ endif }} <b>Gesamt</b>betrag (in {{ POINTS_CUSTOM_NAME }}n)
+                        {{ if player.role == "recipient" }} Ihres Gegenübers {{ endif }}
+                        {{ if player.round_number == 2 }} bei Herdenimmunität {{ endif }}
+                    </td>
+
+                    <td>20</td><td>18</td><td>16</td><td>14</td><td>12</td><td>10</td>
+
+                {{ if player.round_number == 2 }}
+                <tr>
+                    <td colspan="6">
+                        {{ if player.role == "dictator" }} Ihr {{ endif }} <b>Gesamt</b>betrag
+                        {{ if player.role == "recipient" }} Ihres Gegenüber {{ endif }}
+                        wenn Herdenimmunität <b>nicht</b> erreicht wird (in {{ POINTS_CUSTOM_NAME }}n)
+
+                    <td>5</td><td>5</td><td>5</td><td>5</td><td>5</td><td>5</td>
+                </tr>
+                {{ endif }}
                 </tbody>
             </table>
         </div>
-        <div class="standard-paragraph">
-            {{ if player.role == "dictator" }}
-            Beispiele dafür, wie sich die Entscheidung auf Sie und Ihr Gegenüber auswirkt:
-            <ul class="first-level-list">
-                <li>
-                    Wenn Sie sich für Termin 2 entscheiden,
-                    erhalten Sie zusätzlich {{ options.2.amount }} {{ POINTS_CUSTOM_NAME }}.
-                    Die Wahrscheinlichkeit, dass Ihr Gegenüber die Anfangs&shy;ausstattung von
-                    {{ endowment_in_points }}n verliert, liegt bei {{ options.2.probability }} Prozent.
-                </li>
-                <li>
-                    Wenn Sie sich für Termin 6 entscheiden,
-                    erhalten Sie zusätzlich {{ options.6.amount }} {{ POINTS_CUSTOM_NAME }}.
-                    Ihr Gegenüber wird die Impfung erhalten,
-                    damit die Grundausstattung nicht verlieren und somit {{ endowment_in_points }} erhalten.
-                </li>
-            </ul>
-            {{ elif player.role == "recipient" }}
-            Beispiele dafür, wie sich die Entscheidung Ihres Gegenübers auf Sie und Ihr Gegenüber auswirkt:
-            <ul class="first-level-list">
-                <li>
-                    Wenn sich Ihr Gegenüber für Termin 2 entscheidet,
-                    erhält Ihr Gegenüber zusätzlich {{ options.2.amount }} {{ POINTS_CUSTOM_NAME }}.
-                    Die Wahrscheinlichkeit, dass Sie die Impfung nicht erhalten und damit die Anfangsausstattung von
-                    {{ endowment_in_points }}n verlieren, liegt bei {{ options.2.probability }} Prozent.
-                </li>
-                <li>
-                    Wenn sich Ihr Gegenüber für Termin 6 entscheidet,
-                    erhält Ihr Gegenüber zusätzlich {{ options.6.amount }} {{ POINTS_CUSTOM_NAME }}.
-                    Sie werden die Impfung erhalten,
-                    damit Ihre Grundausstattung nicht verlieren und somit {{ endowment_in_points }} erhalten.
-                </li>
-            </ul>
-            {{ endif }}
-        </div>
-        {{ elif player.round_number == 2 }}
-        <div class="standard-paragraph">
-            {{ if player.role == "dictator" }}
-            Sie werden mit einer neuen, ungeimpften Person gematched.
-            {{ elif player.role == "recipient" }}
-            Sie werden mit einem neuen Partner gematched und sind ungeimpft.
-            {{ endif }}
-        </div>
-        <div class="standard-paragraph">
-            Das Robert-Koch-Institut hat verschiedene mathematische Modellszenarien aufgestellt,
-            die zeigen ab welcher Impfquote die Pandemie vorübergehen kann,
-            da ein sogenannter Gemeinschaftsschutz, oder „Herdenimmunität“ besteht.
-            Die Modellierungen zeigen,
-            dass eine Impfquote von mindestens {{ min_vaccination_coverage }}% notwendig ist.
-        </div>
-        <div class="standard-paragraph">
-            {{ if player.role == "dictator" }}
-            Wir überführen dies nun auf das Experiment.
-            Sie haben erneut die Möglichkeit einen zeitnahen Termin für eine Boosterimpfung und
-            somit einen höheren Talerbetrag zu bekommen,
-            aber gleichzeitig die Wahrscheinlichkeit des Impftermins Ihres Gegenübers zu senken.
-            Sie alle fungieren nun als Gesellschaft.
-            Neben Ihnen sind {{ num_other_dictators }} weitere Personen geimpft und
-            entscheiden ebenfalls über eine andere ungeimpfte Person.
-            Insgesamt müssen von den ungeimpften Personen {{ subsession.min_vaccinated_recipients }} Personen
-            geimpft werden, um Herdenimmunität von {{ min_vaccination_coverage }}% zu erreichen (insgesamt mit
-            den bereits geimpften {{ subsession.num_dictators }} Personen).
-            Wenn diese nicht erreicht wird, besteht die Möglichkeit eines erneuten Lockdowns und
-            Sie und alle anderen geimpften Personen erhalten nur noch einen Fixbetrag
-            von {{ failure_payoff }}n, die Ungeimpften bleiben bei 0 {{ POINTS_CUSTOM_NAME }}.
-            {{ elif player.role == "recipient" }}
-            Wir überführen dies nun auf das Experiment.
-            Ihr Gegenüber hat erneut die Möglichkeit einen zeitnahen Termin für eine Boosterimpfung und
-            somit einen höheren Talerbetrag zu bekommen,
-            aber gleichzeitig Ihre Wahrscheinlichkeit des Impftermins zu senken.
-            Sie alle fungieren nun als Gesellschaft.
-            Neben Ihrem Gegenüber sind {{ num_other_dictators }} weitere Personen geimpft und
-            entscheiden ebenfalls über eine andere ungeimpfte Person.
-            Insgesamt müssen von den ungeimpften Personen {{ subsession.min_vaccinated_recipients }} Personen
-            geimpft werden, um Herdenimmunität von {{ min_vaccination_coverage }}% zu erreichen (insgesamt mit
-            den bereits geimpften {{ subsession.num_dictators }} Personen).
-            Wenn diese nicht erreicht wird, besteht die Möglichkeit eines erneuten Lockdowns und
-            alle geimpften Personen erhalten nur noch einen Fixbetrag
-            von {{ failure_payoff }}n, die Ungeimpften bleiben bei 0 {{ POINTS_CUSTOM_NAME }}.
-            {{ endif }}
-        </div>
-        {{ endif }}
     </div>
     <div id="button-box">
         <button class="otree-btn-next btn btn-primary">Weiter</button>

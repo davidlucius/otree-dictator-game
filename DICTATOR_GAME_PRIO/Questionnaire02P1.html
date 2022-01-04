@@ -1,0 +1,27 @@
+{{ extends "global/Page.html" }}
+
+{{ block title }}
+WiSo-Forschungslabor
+{{ endblock }}
+
+{{ block content }}
+<div id="wrapper">
+    <div id="content-box">
+        <div class="content-header">
+            Fragebogen
+        </div>
+
+        <div class="standard-paragraph">
+            {{ formfield "entscheidung" }}
+        </div>
+
+    </div>
+    <div id="button-box">
+        <button class="otree-btn-next btn btn-primary">Weiter</button>
+    </div>
+</div>
+{{ endblock }}
+
+{{ block scripts }}
+<script src="{{ static 'global/js/Questionnaire.js' }}"></script>
+{{ endblock }}

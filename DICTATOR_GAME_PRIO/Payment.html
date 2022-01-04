@@ -15,16 +15,16 @@ WiSo-Forschungslabor
             <ul class="first-level-list">
                 {{ for payoff in payoffs }}
                 <li>
-                    <span class="fw-bold">In Entscheidung {{ forloop.counter }}:</span> {{ payoff }}
+                    <span class="fw-bold">In Teil {{ forloop.counter }}:</span> {{ payoff }}
                 </li>
                 {{ endfor }}
             </ul>
         </div>
         <div class="standard-paragraph">
-            Insgesamt haben Sie damit {{ participant.payoff }} erspielt.
+            Insgesamt haben Sie damit {{ participant.payoff }} erhalten.
         </div>
         <div class="standard-paragraph">
-            Somit beträgt Ihre Auszahlung {{ participant.payoff_plus_participation_fee }}.
+            Somit beträgt Ihre Auszahlung <b>{{ participant.payoff_plus_participation_fee }}</b>.
         </div>
         <div class="standard-paragraph">
             Ihre Auszahlung wird Ihnen in den nächsten Tagen auf Ihr Bankkonto überwiesen.

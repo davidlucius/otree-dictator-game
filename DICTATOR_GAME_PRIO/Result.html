@@ -7,68 +7,77 @@ WiSo-Forschungslabor
 {{ block content }}
 <div id="wrapper">
     <div id="content-box">
+        <div class="standard-paragraph">
+            Unter Berücksichtigung des gewählten Termins und der damit einhergehenden Wahrscheinlichkeiten wurde folgendes Ergebnis von dem Algorithmus ausgelost:
+        </div>
+
         <div class="content-header">
-            Ergebnis
+            Ergebnis Teil 1
         </div>
-        {{ if player.round_number == 1 }}
+
+
         <div class="standard-paragraph">
-        {{ if player.role == "dictator" }}
-            {{ if partner.vaccinated }}
-            Ihr Gegenüber hat eine Impfung erhalten und behält die {{ endowment_in_points }}.
+            <p>
+            {{ if playerR1.role == "dictator" }}
+                In Teil 1 haben Sie Termin {{ playerR1.group.appointment }} gewählt.
+                {{ if partnerR1.vaccinated }}
+                    Ihr Gegenüber <b>hat eine Impfung erhalten</b> und behält die {{ endowment_in_points }}.
+                {{ else }}
+                    <b>Ihr Gegenüber hat leider keine Impfung erhalten</b> und hat die {{ endowment_in_points }} verloren.
+                {{ endif }}
+            {{ elif playerR1.role == "recipient" }}
+                In Teil 1 hat Ihr Gegenüber Termin {{ playerR1.group.appointment }} gewählt.
+                {{ if playerR1.vaccinated }}
+                    <b>Sie haben eine Impfung erhalten</b> und behalten Ihre {{ endowment_in_points }}.
+                {{ else }}
+                    <b>Sie haben leider keine Impfung erhalten</b> und haben Ihre {{ endowment_in_points }} verloren.
+                {{ endif }}
+            {{ endif }}
+            Sie erhalten <b>{{ playerR1.payoff }}.</b>
+            </p>
+        </div>
+
+        <div class="content-header">
+            Ergebnis Teil 2
+        </div>
+        <div class="standard-paragraph">
+            <p>{{ subsession.num_vaccinated_recipients }} von {{ subsession.num_recipients }} Ungeimpften
+            haben eine Impfung bekommen. {{ subsession.min_vaccinated_recipients }} Personen mussten
+            geimpft werden, um Herdenimmunität zu erreichen.
+            {{ if vaccination_coverage_is_reached }}
+                <b>Herdenimmunität ist erreicht!</b>
             {{ else }}
-            Ihr Gegenüber hat leider keine Impfung erhalten und hat die {{ endowment_in_points }} verloren.
+                <b> Sie haben Herdenimmunität leider nicht erreicht.</b>
+            {{ endif }}</p>
+            <p>
+            {{ if player.role == "dictator" }}
+                In Teil 2 haben Sie Termin {{ player.group.appointment }} gewählt.
+                {{ if partner.vaccinated }}
+                    Ihr Gegenüber <b>hat eine Impfung erhalten</b> und behält die {{ endowment_in_points }}.
+                {{ else }}
+                    Ihr Gegenüber hat <b>leider keine Impfung erhalten</b> und hat die {{ endowment_in_points }} verloren.
+                {{ endif }}
+            {{ elif player.role == "recipient" }}
+                In Teil 2 hat Ihr Gegenüber Termin {{ player.group.appointment }} gewählt.
+                {{ if player.vaccinated and vaccination_coverage_is_reached }}
+                    Sie haben eine Impfung bekommen.
+                {{ elif not player.vaccinated and vaccination_coverage_is_reached }}
+                    Sie haben leider keine Impfung erhalten.
+                {{ elif player.vaccinated and not vaccination_coverage_is_reached }}
+                    Sie haben eine Impfung bekommen aber haben keine Herdenimmunität.
+                {{ elif not player.vaccinated and not vaccination_coverage_is_reached }}
+                    Sie haben leider keine Impfung erhalten.
+                {{ endif }}
             {{ endif }}
-        {{ elif player.role == "recipient" }}
-            {{ if player.vaccinated }}
-            Sie haben eine Impfung erhalten und behalten Ihre {{ endowment_in_points }}.
-            {{ else }}
-            Sie haben leider keine Impfung erhalten und haben Ihre {{ endowment_in_points }} verloren.
-            {{ endif }}
-        {{ endif }}
+            Sie erhalten <b>{{ player.payoff }}.</b>
+            </p>
         </div>
-        {{ elif player.round_number == 2 }}
-        <div class="standard-paragraph">
-            {{ subsession.num_vaccinated_recipients }} von {{ subsession.num_recipients }} Ungeimpften
-            haben eine Impfung bekommen.
-            {{ subsession.min_vaccinated_recipients }} Personen mussten geimpft werden,
-            um eine Herdenimmunität zu erreichen.
-        </div>
-        <div class="standard-paragraph">
-        {{ if vaccination_coverage_is_reached }}
-        Herdenimmunität ist erreicht!
-        {{ else }}
-        Sie haben Herdenimmunität leider nicht erreicht. Sie kehren in den Lockdown zurück.
-        {{ endif }}<br>
-        {{ if player.role == "dictator" }}
-            {{ if partner.vaccinated and vaccination_coverage_is_reached }}
-            Ihr Gegenüber hat eine Impfung erhalten und behält die {{ partner.payoff }}.<br>
-            Sie erhalten Ihren erspielten Talerbetrag von {{ player.payoff }}.
-            {{ elif not partner.vaccinated and vaccination_coverage_is_reached }}
-            Ihr Gegenüber hat leider keine Impfung erhalten und bekommt deshalb {{ partner.payoff }}.<br>
-            Sie erhalten Ihren erspielten Talerbetrag von {{ player.payoff }}.
-            {{ elif partner.vaccinated and not vaccination_coverage_is_reached }}
-            Obwohl Ihr Gegenüber eine Impfung erhalten hat, haben Sie keine Herdenimmunität.<br>
-            Sie und Ihr Gegenüber erhalten {{ player.payoff }}.
-            {{ elif not partner.vaccinated and not vaccination_coverage_is_reached }}
-            Ihr Partner hat leider keine Impfung erhalten und bekommt deshalb {{ partner.payoff }}.<br>
-            Sie erhalten {{ player.payoff }}.
-            {{ endif }}
-        {{ elif player.role == "recipient" }}
-            {{ if player.vaccinated and vaccination_coverage_is_reached }}
-            Sie haben eine Impfung bekommen und erhalten Ihre {{ player.payoff }}!
-            {{ elif not player.vaccinated and vaccination_coverage_is_reached }}
-            Sie haben leider keine Impfung erhalten. Sie erhalten {{ player.payoff }}.
-            {{ elif player.vaccinated and not vaccination_coverage_is_reached }}
-            Sie haben eine Impfung bekommen aber haben keine Herdenimmunität. Sie erhalten {{ player.payoff }}.
-            {{ elif not player.vaccinated and not vaccination_coverage_is_reached }}
-            Sie haben leider keine Impfung erhalten. Sie erhalten {{ player.payoff }}.
-            {{ endif }}
-        {{ endif }}
-        </div>
-        {{ endif }}
     </div>
     <div id="button-box">
         <button class="otree-btn-next btn btn-primary">Weiter</button>
     </div>
 </div>
 {{ endblock }}
+
+
+

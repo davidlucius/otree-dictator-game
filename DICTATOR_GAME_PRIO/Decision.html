@@ -5,39 +5,60 @@ WiSo-Forschungslabor
 {{ endblock }}
 
 {{ block content }}
+
+
+
 <div id="wrapper">
     <div id="content-box">
         <div class="standard-paragraph">
-            Entscheiden Sie sich für einen der folgenden Termine:
+            Bitte entscheiden Sie sich für einen der folgenden Termine:
         </div>
         <div class="standard-paragraph">
             <table id="risk-options" class="w-100">
                 <thead>
                 <tr>
-                    <th>Termin</th>
+                    <th>Ihr Termin</th>
                     {{ for option in options }}
                     <th>{{ option }}</th>
                     {{ endfor }}
                 </tr>
                 </thead>
                 <tbody>
+
                 <tr>
                     <td>
-                        Ihr zusätzlicher Betrag (in {{ POINTS_CUSTOM_NAME }}n)
+                        Risiko, dass der Ungeimpfte seine Grundausstattung von {{ endowment_in_points }}n
+                        verliert und ungeimpft bleibt.
                     </td>
-                    {{ for values in options.values }}
-                    <td>{{ values.amount }}</td>
-                    {{ endfor }}
-                </tr>
-                <tr>
-                    <td>
-                        Wahrscheinlichkeit, dass Ihr Gegenüber keine Impfung erhält und
-                        damit die Ausstattung von {{ endowment_in_points }}n verliert
-                    </td>
-                    {{ for values in options.values }}
+                        {{ for values in options.values }}
                     <td>{{ values.probability }}%</td>
-                    {{ endfor }}
+                        {{ endfor }}
+                <tr>
+                    <td>
+                        Ihr <b>Zusatz</b>betrag (in {{ POINTS_CUSTOM_NAME }}n)
+                    </td>
+                        {{ for values in options.values }}
+                    <td>{{ values.amount }}</td>
+                        {{ endfor }}
                 </tr>
+                <tr>
+                    <td>
+                        Ihr <b>Gesamt</b>betrag {{ if player.round_number == 2 }} wenn Herdenimmunität erreicht wird
+                        {{ endif }} (in {{ POINTS_CUSTOM_NAME }}n)
+                    </td>
+                        {{ for values in options_2.values }}
+                    <td>{{ values.amount }}</td>
+                        {{ endfor }}
+                {{ if player.round_number == 2 }}
+                <tr>
+                    <td>
+                        Ihr <b>Gesamt</b>betrag  wenn Herdenimmunität <b>nicht</b> erreicht wird (in {{ POINTS_CUSTOM_NAME }}n)
+                    </td>
+                        {{ for values in options.values }}
+                    <td>{{ no_herd }}</td>
+                        {{ endfor }}
+                </tr>
+                {{ endif }}
                 </tbody>
             </table>
         </div>
@@ -45,21 +66,20 @@ WiSo-Forschungslabor
             {{ formfield "appointment" }}
         </div>
         <div class="standard-paragraph">
-            Ihr zusätzlicher Betrag: <span id="additional-amount">___</span> {{ POINTS_CUSTOM_NAME }}
+            Ihr Zusatzbetrag: <span id="additional-amount">___</span> {{ POINTS_CUSTOM_NAME }}
         </div>
         <div class="standard-paragraph">
-            Ihr Gesamtbetrag inklusive Grundausstattung
-            {{ if player.round_number == 2 }}wenn Herdenimmunität erreicht wird{{ endif }}:
+            Ihr Gesamtbetrag (inklusive Grundausstattung von 10 Talern){{ if player.round_number == 2 }} wenn Herdenimmunität erreicht wird{{ endif }}:
             <span id="total-amount">___</span> {{ POINTS_CUSTOM_NAME }}
         </div>
         {{ if player.round_number == 2 }}
         <div class="standard-paragraph">
-            Ihr Gesamtbetrag inklusive Grundausstattung wenn Herdenimmunität nicht erreicht wird:
+            Ihr Gesamtbetrag wenn Herdenimmunität nicht erreicht wird:
             <span id="failure-amount">___</span> {{ POINTS_CUSTOM_NAME }}
         </div>
         {{ endif }}
         <div class="standard-paragraph">
-            Die Wahrscheinlichkeit Ihres Gegenübers geimpft zu werden sinkt um <span id="probability">___</span>%.
+            Die Wahrscheinlichkeit Ihres Gegenübers geimpft zu werden sinkt um <span id="probability">___</span> Prozentpunkte.
         </div>
     </div>
     <div id="button-box">

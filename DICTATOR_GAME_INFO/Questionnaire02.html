@@ -11,17 +11,35 @@ WiSo-Forschungslabor
             Fragebogen
         </div>
         <div class="standard-paragraph">
-            Wir würden Sie nun bitten noch die folgenden Fragen zu beantworten.
+            Zum Abschluss würden wir Sie bitten die nachfolgenden Fragen zu beantworten:
         </div>
         <div class="standard-paragraph">
-            {{ formfield "q3" }}
+            {{ formfield "Alter" }}
         </div>
         <div class="standard-paragraph">
-            {{ formfield "q4" }}
+            {{ formfield "Geschlecht" }}
+        </div>
+         <div class="standard-paragraph">
+            {{ formfield "Fakultaet" }}
+        </div>
+        <div class="standard-paragraph">
+            {{ formfield "Bildung" }}
+        </div>
+        <div class="standard-paragraph">
+            {{ formfield "Erwerbstaetigkeit" }}
         </div>
     </div>
     <div id="button-box">
         <button class="otree-btn-next btn btn-primary">Weiter</button>
     </div>
 </div>
+
+<script>
+setTimeout(
+function () {
+alert("Bitte finalisieren Sie nun den Fragebogen.");
+},
+60*1000); // 60 seconds
+</script>
+
 {{ endblock }}

@@ -11,25 +11,33 @@ WiSo-Forschungslabor
             Teil 2
         </div>
         <div class="standard-paragraph">
-            Im Folgenden werden Sie geben, drei Entscheidungen zu treffen.
+            Im Folgenden werden Sie gebeten drei Entscheidungen zu treffen.
         </div>
         <div class="standard-paragraph">
-            In jeder Entscheidung können Sie als Diktator:in darüber entscheiden,
-            wie Sie {{ endowment_in_points }} zwischen sich und einer zufällig ausgewählten anderen Person
-            des Experiments aufteilen möchten.
+            In jeder Entscheidung können Sie {{ endowment_in_points }} zwischen sich <br> und einer zufällig ausgewählten Person
+            des Experiments aufteilen.
         </div>
         <div class="standard-paragraph">
-            Gleichzeitig sind Sie für eine:n andere:n Diktator:in Empfänger:in.
+            Gleichzeitig sind Sie Empfänger:in für eine:n andere:n Entscheider:in.
         </div>
         <div class="standard-paragraph">
             {{ points_per_real_world_currency_unit }} entsprechen 1 Euro.
         </div>
         <div class="standard-paragraph">
-            Eine der drei Entscheidungen wird am Ende zufällig zur Auszahlung ausgewählt.
+            Eine Ihrer drei Entscheidungen wird am Ende zufällig zur Auszahlung ausgewählt.
         </div>
     </div>
     <div id="button-box">
         <button class="otree-btn-next btn btn-primary">Weiter</button>
     </div>
 </div>
+
+<script>
+setTimeout(
+function () {
+alert("Bitte klicken Sie nach dem Lesen der Instruktionen auf "Weiter.");
+},
+60*1000); // 60 seconds
+</script>
+
 {{ endblock }}

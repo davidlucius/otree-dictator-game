@@ -5,7 +5,7 @@ SESSION_CONFIGS = [
         name='dictator_game_info',
         display_name='Dictator Game - Info',
         app_sequence=['DICTATOR_GAME_INFO'],
-        num_demo_participants=4,
+        num_demo_participants=2,
         endowment_in_real_world_currency=3,
         real_world_currency_per_point=0.05
     ),

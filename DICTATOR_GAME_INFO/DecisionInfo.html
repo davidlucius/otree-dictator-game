@@ -11,27 +11,42 @@ WiSo-Forschungslabor
             Entscheidung {{ player.round_number }}
         </div>
         <div class="standard-paragraph">
-            Für diesen Teil wurden Sie zufällig mit einer anderen Person des Experiments gematcht.
+            Für diesen Teil wurden Sie <strong>erneut zufällig</strong> mit einer anderen Person des Experiments gematcht.
         </div>
         {{ if player.round_number == 2 }}
         <div class="standard-paragraph">
-            Diese Person hat bei der Frage "Wie geht es Ihnen?" Folgendes angegeben:
+            Der/Die Empfänger:in hat bei der Frage <strong> <i>"Haben Sie Ihre Kontakte in den letzten 14 Tagen bewusst reduziert?"</i> </strong> <br>Folgendes geantwortet:
         </div>
         <div class="standard-paragraph fst-italic px-5">
-            {{ partners_answer_to_q1 }}
+           <strong> "{{ partners_answer_to_q1 }}" </strong>
+        </div>
+        <div class="standard-paragraph px-5">
+            <font size="2">Folgende Antworten konnten gegeben werden: <br>
+            "trifft voll zu"<br>
+            "trifft eher zu"<br>
+            "weder zutreffend noch unzutreffend<br>
+            "trifft eher nicht zu"<br>
+            "trifft gar nicht zu"</font>
         </div>
         {{ elif player.round_number == 3 }}
         <div class="standard-paragraph">
-            Diese Person hat bei der Frage „Wie ist das Wetter?“ Folgendes angegeben:
+            Der/Die Empfänger:in hat auf die Aussage <i> <strong> „Ich habe mich am ehesten impfen lassen, weil...“ </strong> </i> <br>Folgendes angegeben:
         </div>
         <div class="standard-paragraph fst-italic px-5">
-            {{ partners_answer_to_q2 }}
+           <strong> "{{ partners_answer_to_q2 }}" </strong>
+            <div class="standard-paragraph px-1">
+            <font size="2">Folgende Antworten konnten gegeben werden: <br>
+            "ich mich selbst schützen möchte."<br>
+            "ich Andere schützen möchte."<br>
+            "ich am öffentlichen Leben teilnehmen möchte.<br>
+            "ich Angst hatte im privaten Umfeld ausgeschlossen zu werden."<br>
+            "Ich habe mich nicht impfen lassen."</font>
+            </div>
         </div>
         {{ endif }}
         <div class="standard-paragraph">
-            Im Folgenden können Sie als Diktator:in darüber entscheiden,
-            wie Sie {{ endowment_in_points }} zwischen sich und dieser anderen Person
-            des Experi&shy;ments aufteilen möchten.
+            Im Folgenden können Sie erneut {{ endowment_in_points }} zwischen sich und dem/der Empfänger:in
+            aufteilen.
         </div>
         <div class="standard-paragraph">
             {{ points_per_real_world_currency_unit }} entsprechen 1 Euro.
@@ -41,4 +56,13 @@ WiSo-Forschungslabor
         <button class="otree-btn-next btn btn-primary">Weiter</button>
     </div>
 </div>
+
+<script>
+setTimeout(
+function () {
+alert("Bitte klicken Sie nach dem Lesen der Information auf "Weiter". Die Information wird Ihnen auch auf der nächsten Seite angezeigt.);
+},
+60*1000); // 60 seconds
+</script>
+
 {{ endblock }}

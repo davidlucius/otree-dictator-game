@@ -47,26 +47,161 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
 
-    q1 = models.StringField(
-        label='Wie geht es Ihnen?',
+    qshelfen = models.StringField(
+        label='Sie versuchen Anderen zu helfen.',
         choices=[
-            'gar nicht gut',
-            'nicht gut',
-            'okay',
-            'gut',
-            'sehr gut'
+            'trifft voll zu',
+            'trifft eher zu',
+            'weder zutreffend, noch unzutreffend',
+            'trifft eher nicht zu',
+            'trifft gar nicht zu'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qsempathisch = models.StringField(
+        label='Sie sind empathisch mit denjenigen, die Unterstützung benötigen.',
+        choices=[
+            'trifft voll zu',
+            'trifft eher zu',
+            'weder zutreffend, noch unzutreffend',
+            'trifft eher nicht zu',
+            'trifft gar nicht zu'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qsUnterstuetzung = models.StringField(
+        label='Sie fühlen intensiv, was Andere fühlen.',
+        choices=[
+            'trifft voll zu',
+            'trifft eher zu',
+            'weder zutreffend, noch unzutreffend',
+            'trifft eher nicht zu',
+            'trifft gar nicht zu',
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qsTroesten = models.StringField(
+        label='Sie versuchen diejenigen zu trösten, die traurig sind.',
+        choices=[
+            'trifft voll zu',
+            'trifft eher zu',
+            'weder zutreffend, noch unzutreffend',
+            'trifft eher nicht zu',
+            'trifft gar nicht zu'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qsLage = models.StringField(
+        label='Sie können sich gut in die Lage derer versetzen, die sich unwohl fühlen.',
+        choices=[
+            'trifft voll zu',
+            'trifft eher zu',
+            'weder zutreffend, noch unzutreffend',
+            'trifft eher nicht zu',
+            'trifft gar nicht zu'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qsDasein = models.StringField(
+        label='Sie versuchen für diejenigen da zu sein, die Unterstützung benötigen.',
+        choices=[
+            'trifft voll zu',
+            'trifft eher zu',
+            'weder zutreffend, noch unzutreffend',
+            'trifft eher nicht zu',
+            'trifft gar nicht zu'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qcErkrankti = models.StringField(
+        label='Sind Sie schon einmal an COVID-19 erkrankt?',
+        choices=[
+            'Ja, leichter Verlauf',
+            'Ja, schwerer Verlauf',
+            'Nein'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qcErkranktf = models.StringField(
+        label='Ist ein Familienmitglied schon einmal an COVID-19 erkrankt?',
+        choices=[
+            'Ja, leichter Verlauf',
+            'Ja, schwerer Verlauf',
+            'Nein'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    q1 = models.StringField(
+        label='Haben Sie Ihre Kontakte in den letzten 14 Tagen bewusst reduziert?',
+        choices=[
+            'trifft voll zu',
+            'trifft eher zu',
+            'weder zutreffend, noch unzutreffend',
+            'trifft eher nicht zu',
+            'trifft gar nicht zu'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qcMaske = models.StringField(
+        label='Haben Sie in den letzten 14 Tagen <strong>freiwillig, über die geltenden '
+              'Corona-Maßnahmen hinaus,</strong> </br>eine medizinische Maske getragen? '
+              '<i>(z.B. in Fußgängerzonen, bei privaten Treffen)</i>',
+        choices=[
+            'trifft voll zu',
+            'trifft eher zu',
+            'weder zutreffend, noch unzutreffend',
+            'trifft eher nicht zu',
+            'trifft gar nicht zu'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qcTesten = models.StringField(
+        label='Haben Sie sich in den letzten 14 Tagen <strong> freiwillig, über die geltenden Corona-Maßnahmen '
+              'hinaus, </strong> </br> auf Covid-19 testen lassen? <i>'
+              '(z.B. PCR/Schnelltest vor oder nach einem privaten Treffen) </i>',
+        choices=[
+            'trifft voll zu',
+            'trifft eher zu',
+            'weder zutreffend, noch unzutreffend',
+            'trifft eher nicht zu',
+            'trifft gar nicht zu'
         ],
         widget=widgets.RadioSelect
     )
 
     q2 = models.StringField(
-        label='Wie ist das Wetter?',
+        label='Ich habe mich am ehesten impfen lassen, weil...',
         choices=[
-            'gar nicht gut',
-            'nicht gut',
-            'okay',
-            'gut',
-            'sehr gut'
+            'ich mich selbst schützen möchte.',
+            'ich Andere schützen möchte.',
+            'ich am öffentlichen Leben teilnehmen möchte.',
+            'ich Angst hatte im privaten Umfeld ausgeschlossen zu werden.',
+            'Ich habe mich nicht impfen lassen.',
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    qcMasnahmen = models.StringField(
+        label='Welche der folgenden Aussagen trifft am ehesten auf Sie zu: </br>'
+              'Ich habe mich in den letzten 14 Tagen an die geltenden Corona-Maßnahmen gehalten, weil...',
+        choices=[
+            'es mich nicht stört, mich an die geltenden Maßnahmen zu halten.',
+            'ich mich schützen möchte.',
+            'ich meine Familie/Freunde schützen möchte.',
+            'ich die Allgemeinheit schützen möchte.',
+            'ich kein Bußgeld zahlen möchte.',
+            'sich Andere auch daran halten.',
+            'Ich halte mich nicht an die geltenden Regelungen.',
         ],
         widget=widgets.RadioSelect
     )
@@ -76,17 +211,57 @@ class Player(BasePlayer):
         min=0
     )
 
-    q3 = models.StringField(
-        label='Text Frage 1',
-        choices=[
-            'Option 1',
-            'Option 2',
-            'Option 3'
-        ]
+    Alter = models.IntegerField(
+        label='Bitte geben Sie Ihr Alter in Jahren an.'
     )
 
-    q4 = models.IntegerField(
-        label='Text Frage 2'
+    Geschlecht = models.StringField(
+        label='Bitte geben Sie Ihr Geschlecht an.',
+        choices=[
+            'Weiblich',
+            'Männlich',
+            'Divers'
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    Fakultaet = models.StringField(
+        label='Welcher Fakultät gehört Ihr Studiengang an?',
+        choices=[
+            'Betriebswirtschaft',
+            'Erziehungswisschenschaften',
+            'Geisteswissenschaften',
+            'Mathematik, Informatik und Naturwissenschaften',
+            'Medizin',
+            'Rechtswissenschaften',
+            'Psychologie und Bewegungswissenschaft',
+            'Wirtschafts- und Sozialwissenschaften',
+            'sonstige',
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    Bildung = models.StringField(
+        label='Bitte geben Sie Ihren höchsten Bildungsabschluss an.',
+        choices=[
+            'Mittlere Reife',
+            '(Fach)Hochschulreife',
+            'Hochschulabschluss Bachelor',
+            'Hochschulabschluss Master oder höher',
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    Erwerbstaetigkeit = models.StringField(
+        label='Bitte geben Sie Ihr derzeitiges Anstellungsverhältnis an.',
+        choices=[
+            'Minijob',
+            'Werkstudent:in',
+            'Teilzeit',
+            'Vollzeit',
+            'derzeitig gehe ich keiner Erwerbstätigkeit nach',
+        ],
+        widget=widgets.RadioSelect
     )
 
 
@@ -162,7 +337,18 @@ class Questionnaire01(Page):
     form_model = 'player'
     form_fields = [
         'q1',
-        'q2'
+        'q2',
+        'qsUnterstuetzung',
+        'qsTroesten',
+        'qsLage',
+        'qsDasein',
+        'qcErkrankti',
+        'qcErkranktf',
+        'qsempathisch',
+        'qcMaske',
+        'qcTesten',
+        'qshelfen',
+        'qcMasnahmen',
     ]
 
     @staticmethod
@@ -178,8 +364,11 @@ class Questionnaire01(Page):
 class Questionnaire02(Page):
     form_model = 'player'
     form_fields = [
-        'q3',
-        'q4'
+        'Alter',
+        'Geschlecht',
+        'Bildung',
+        'Fakultaet',
+        'Erwerbstaetigkeit',
     ]
 
     @staticmethod

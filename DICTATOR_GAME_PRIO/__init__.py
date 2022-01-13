@@ -965,8 +965,8 @@ class Payment(Page):
 
 
 page_sequence = [
-    # Intro01,
-    # QuestionnaireProSocial,
+    Intro01,
+    QuestionnaireProSocial,
     Intro02,
     DecisionInfo,
     Decision,

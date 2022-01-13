@@ -34,10 +34,17 @@ WiSo-Forschungslabor
         </div>
         {{ endif }}
         {{ endif }}
+        {{ if player.round_number == 1 }}
         <div class="standard-paragraph">
-            Im Folgenden können Sie erneut {{ endowment_in_points }} zwischen sich und dem/der Empfänger:in
+           Im Folgenden können Sie {{ endowment_in_points }} zwischen sich und dem/der Empfänger:in
             aufteilen.
         </div>
+        {{ else }}
+        <div class="standard-paragraph">
+           Im Folgenden können Sie erneut {{ endowment_in_points }} zwischen sich und dem/der Empfänger:in
+            aufteilen.
+        </div>
+        {{ endif }}
         <div class="standard-paragraph">
             {{ points_per_real_world_currency_unit }} entsprechen 1 Euro.
         </div>

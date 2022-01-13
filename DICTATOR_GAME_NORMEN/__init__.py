@@ -224,7 +224,7 @@ def taler_max(player):
 # ----------------------------------------------------------------------------------------------------------------------
 # hier haben wir timeouts eingebaut, um die Zeit pro Seite zu begrenzen
 class Intro(Page):
-    timeout_seconds = 120
+   # timeout_seconds = 120
 
     @staticmethod
     def is_displayed(player):
@@ -239,7 +239,7 @@ class Intro(Page):
 
 
 class DecisionInfo(Page):
-    timeout_seconds = 60
+  #  timeout_seconds = 60
 
     @staticmethod
     def is_displayed(player):
@@ -254,7 +254,7 @@ class DecisionInfo(Page):
 
 
 class DecisionNeu(Page):
-    timeout_seconds = 120
+  #  timeout_seconds = 120
 
     form_model = 'player'
     form_fields = [
@@ -287,7 +287,7 @@ class DecisionNeu(Page):
 
 
 class Questionnaire(Page):
-    timeout_seconds = 60
+  #  timeout_seconds = 60
     form_model = 'player'
     form_fields = [
         'q3',
@@ -300,7 +300,7 @@ class Questionnaire(Page):
 
 
 class Questionnaire2(Page):
-    timeout_seconds = 180
+   # timeout_seconds = 180
     form_model = 'player'
     form_fields = [
         'q5',
@@ -318,7 +318,7 @@ class Questionnaire2(Page):
 
 
 class Questionnaire3(Page):
-    timeout_seconds = 60
+  #  timeout_seconds = 60
     form_model = 'player'
     form_fields = [
         'q12',

@@ -20,7 +20,7 @@ WiSo-Forschungslabor
                     <th>Entscheidung</th>
                     <th>Behalten</th>
                     <th>Abgegeben</th>
-                    <th>Ihr Anteil aus der Gemeinschaftsabgabe</th>
+                    <th>Gesamtabgabe der Gemeinschaft (verdoppelt)</th>
                 </tr>
                 </thead>
                 <tr>
@@ -42,6 +42,9 @@ WiSo-Forschungslabor
                     <td>{{ groupcontrib_in_round_3 }}</td>
                 </tr>
             </table>
+        </div>
+        <div class="standard-paragraph">
+            Es haben insgesamt {{ subsession.num_players }} Personen an dem Experiment teilgenommen.
         </div>
         <div class="standard-paragraph">
             Entscheidung {{ session.winning_dec }} wurde zufällig für die Auszahlung ausgewählt.

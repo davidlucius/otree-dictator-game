@@ -6,8 +6,8 @@ SESSION_CONFIGS = [
         display_name='Dictator Game - Info',
         app_sequence=['DICTATOR_GAME_INFO'],
         num_demo_participants=2,
-        endowment_in_real_world_currency=3,
-        real_world_currency_per_point=0.05
+        endowment_in_real_world_currency=6,
+        real_world_currency_per_point=0.1
     ),
     dict(
         name='dictator_game_normen',
@@ -22,8 +22,8 @@ SESSION_CONFIGS = [
         display_name='Dictator Game - Prio',
         app_sequence=['DICTATOR_GAME_PRIO'],
         num_demo_participants=2,
-        endowment_in_real_world_currency=2,
-        real_world_currency_per_point=0.20,
+        endowment_in_real_world_currency=2.5,
+        real_world_currency_per_point=0.25,
         min_vaccination_coverage=0.85,
         failure_payoff_in_points=5
     )

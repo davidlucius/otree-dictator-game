@@ -221,14 +221,16 @@ WiSo-Forschungslabor
             haben.
         </div>
         <div class="standard-paragraph">
-            Bitte wählen Sie die Anzahl an Talern, die Sie behalten möchten.
+            Bitte wählen Sie die Anzahl an Talern, die Sie <b> behalten </b> möchten.
         </div>
         <div id="decision-box" class="standard-paragraph">
             Behalten: {{ formfield "taler" }} {{ POINTS_CUSTOM_NAME }}
         </div>
         <div class="standard-paragraph">
-            Damit erhält die Gemeinschaft: <span id="points-for-partner">___</span> {{ POINTS_CUSTOM_NAME }}
+            Sie geben somit <span id="points-for-partner">___</span> {{ POINTS_CUSTOM_NAME }} ab. Diese Abgabe wird für die
+            Gemeinschaft noch verdoppelt.
         </div>
+
     </div>
     <div id="button-box">
         <button class="otree-btn-next btn btn-primary">Weiter</button>

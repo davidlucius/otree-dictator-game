@@ -122,7 +122,7 @@ class Player(BasePlayer):
     qcErkrankti = models.StringField(
         label='Sind Sie schon einmal an COVID-19 erkrankt?',
         choices=[
-            'Ja, leichter Verlauf',
+            'Ja, milder Verlauf',
             'Ja, schwerer Verlauf',
             'Nein'
         ],
@@ -132,7 +132,7 @@ class Player(BasePlayer):
     qcErkranktf = models.StringField(
         label='Ist ein Familienmitglied schon einmal an COVID-19 erkrankt?',
         choices=[
-            'Ja, leichter Verlauf',
+            'Ja, milder Verlauf',
             'Ja, schwerer Verlauf',
             'Nein'
         ],
@@ -229,7 +229,7 @@ class Player(BasePlayer):
         label='Welcher Fakultät gehört Ihr Studiengang an?',
         choices=[
             'Betriebswirtschaft',
-            'Erziehungswisschenschaften',
+            'Erziehungswissenschaften',
             'Geisteswissenschaften',
             'Mathematik, Informatik und Naturwissenschaften',
             'Medizin',
